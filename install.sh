@@ -87,7 +87,7 @@ upload_proxy() {
 	cd /
 	pwd
 	ls
-	cd usr
+	cd root
 	pwd
 	ls
 	node UploadGD.js ${IP4}
