@@ -86,6 +86,7 @@ upload_proxy() {
 	pwd
 	cd /
 	pwd
+	ls
 	node UploadGD.js ${IP4}
 }
 gen_data() {
