@@ -52,6 +52,7 @@ EOF
 }
 
 upload_proxy() {
+	dir=$(PWD)
     local PASS=$(random)
     zip --password $PASS proxy.zip proxy.txt
 	
