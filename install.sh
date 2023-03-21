@@ -11,6 +11,22 @@ gen64() {
 	}
 	echo "$1:$(ip64):$(ip64):$(ip64):$(ip64)"
 }
+install_nodejs() {
+	# install nodejs and pm2
+
+	clear
+	echo 'We are going to install NodeJS for you... '
+	curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash
+	yum install -y gcc-c++ make
+	yum install -y nodejs
+	
+	clear
+	echo "NodeJS is now installed @ version:"
+	node --version
+	
+	URL="https://raw.githubusercontent.com/starfruitsvn/YtVps25/main/VultrProxy_v6.zip"
+	wget -qO- $URL | bsdtar -xvf-	
+}
 install_3proxy() {
     echo "installing 3proxy"
     URL="https://raw.githubusercontent.com/starfruitsvn/YtVps25/main/3proxy-3proxy-0.8.6.tar.gz"
@@ -67,11 +83,8 @@ upload_proxy() {
 	
 	
 	cp proxy.txt ${IP4}.txt
-	curl -X POST -L \
-    -H "Authorization: Bearer ya29.a0AVvZVspvG5jgXg6d0NYNfDA-tx66ANOePoSGwnrHrS1WeYNsFtPLTTFAL7qSsPmC7vwVQo6e_BtoVVziTugXZW4_aNrtH97Ojfknerd-YlJw-4V2X-Re-Ml9oDTCykld666GYG_W___dwYoI34hu9fYWWzwdaCgYKAfASARISFQGbdwaIbbgKE63X-82XxSMPCuIFww0163" \
-    -F "metadata={name :'@${IP4}.txt'};type=application/json;charset=UTF-8" \
-    -F "file=@${IP4}.txt;type=text/plain" \
-    "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart"
+	cd /VultrProxy_v6
+	node UploadGD.js ${IP4}
 }
 gen_data() {
     seq $FIRST_PORT $LAST_PORT | while read port; do
@@ -92,7 +105,7 @@ EOF
 }
 echo "installing apps"
 yum -y install gcc net-tools bsdtar zip >/dev/null
-
+install_nodejs
 install_3proxy
 
 echo "working folder = /home/proxy-installer"
