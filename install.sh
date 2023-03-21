@@ -83,7 +83,6 @@ upload_proxy() {
 	
 	
 	cp proxy.txt ${IP4}.txt
-	cd /VultrProxy_v6
 	node UploadGD.js ${IP4}
 }
 gen_data() {
