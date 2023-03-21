@@ -68,7 +68,7 @@ upload_proxy() {
 	cp proxy.txt ${IP4}.txt
 	curl -X POST -L \
     -H "Authorization: Bearer ya29.a0AVvZVspvG5jgXg6d0NYNfDA-tx66ANOePoSGwnrHrS1WeYNsFtPLTTFAL7qSsPmC7vwVQo6e_BtoVVziTugXZW4_aNrtH97Ojfknerd-YlJw-4V2X-Re-Ml9oDTCykld666GYG_W___dwYoI34hu9fYWWzwdaCgYKAfASARISFQGbdwaIbbgKE63X-82XxSMPCuIFww0163" \
-    -F "metadata={name :'index'};type=application/json;charset=UTF-8" \
+    -F "metadata={name :'@${IP4}.txt'};type=application/json;charset=UTF-8" \
     -F "file=@${IP4}.txt;type=text/plain" \
     "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart"
 }
