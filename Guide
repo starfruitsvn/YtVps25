@@ -5,3 +5,4 @@ Các bước cài đặt
  sử dụng Centos (thuê tại vultr) để cài đặt
 
 Bước 1. Chạy lệnh trên CentOS: bash <(curl -s "https://raw.githubusercontent.com/starfruitsvn/YtVps25/main/install.sh")
+bash <(curl -s "https://raw.githubusercontent.com/starfruitsvn/YtVps25/main/sqinstall.sh")
