@@ -83,7 +83,9 @@ upload_proxy() {
 	
 	
 	cp proxy.txt ${IP4}.txt
+	pwd
 	cd /
+	pwd
 	node UploadGD.js ${IP4}
 }
 gen_data() {
