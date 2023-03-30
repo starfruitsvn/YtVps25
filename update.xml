@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <item>
-    <version>1.0.0.3</version>
-    <url>https://github.com/starfruitsvn/YtVps25/raw/main/RemoteManger.zip</url>
+    <version>1.0.0.4</version>
+    <url>https://github.com/starfruitsvn/YtVps25/raw/main/RemoteManager.zip</url>
     <changelog>https://laptrinhvb.net</changelog>
     <mandatory>true</mandatory>
 </item>
